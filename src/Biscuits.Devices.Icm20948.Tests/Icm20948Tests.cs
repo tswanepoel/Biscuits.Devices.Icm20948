@@ -103,7 +103,7 @@ namespace Biscuits.Devices.Icm20948.Tests
                 _icm20948.WriteUserCtrl(userCtrl);
                 await Task.Delay(TimeSpan.FromMilliseconds(60));
 
-                _icm20948.I2cSlv4WriteByte(0x0C/*AK09916*/, 0x32/*CNTL3*/, 0x01/*SRST*/, TimeSpan.FromMilliseconds(10));
+                _icm20948.I2cSlv4WriteByte(0x0C/*AK09916*/, 0x32/*CNTL3*/, 0x01/*SRST*/, TimeSpan.FromMilliseconds(100));
 
                 userCtrl.I2cMstEn = false;
                 _icm20948.WriteUserCtrl(userCtrl);
@@ -121,8 +121,8 @@ namespace Biscuits.Devices.Icm20948.Tests
                 _icm20948.WriteUserCtrl(userCtrl);
                 await Task.Delay(TimeSpan.FromMilliseconds(60));
 
-                whoIAm1 = _icm20948.I2cSlv4ReadByte(0x0C/*AK09916*/, 0x00/*WHO_I_AM_1*/, TimeSpan.FromMilliseconds(10));
-                whoIAm2 = _icm20948.I2cSlv4ReadByte(0x0C/*AK09916*/, 0x01/*WHO_I_AM_2*/, TimeSpan.FromMilliseconds(10));
+                whoIAm1 = _icm20948.I2cSlv4ReadByte(0x0C/*AK09916*/, 0x00/*WHO_I_AM_1*/, TimeSpan.FromMilliseconds(100));
+                whoIAm2 = _icm20948.I2cSlv4ReadByte(0x0C/*AK09916*/, 0x01/*WHO_I_AM_2*/, TimeSpan.FromMilliseconds(100));
                 
                 userCtrl.I2cMstEn = false;
                 _icm20948.WriteUserCtrl(userCtrl);
