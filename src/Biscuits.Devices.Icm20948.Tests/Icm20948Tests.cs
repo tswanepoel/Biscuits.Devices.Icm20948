@@ -60,11 +60,8 @@ namespace Biscuits.Devices.Icm20948.Tests
         }
 
         [Fact]
-        public async Task ReadWhoAmI_ShouldReturnCorrectDeviceId()
+        public void ReadWhoAmI_ShouldReturnCorrectDeviceId()
         {
-            // Arrange
-            await Initialize();
-
             // Act
             byte result = _icm20948.ReadWhoAmI();
 
