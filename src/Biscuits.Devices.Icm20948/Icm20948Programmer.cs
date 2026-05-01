@@ -975,7 +975,7 @@ namespace Biscuits.Devices.Icm20948
 
             const int chunkSize = 16;
 
-            for (int position = 0; position < _dmp3aImage.Length / chunkSize; position += chunkSize)
+            for (int position = 0; position < _dmp3aImage.Length; position += chunkSize)
             {
                 int length = Math.Min(_dmp3aImage.Length - position, chunkSize);
                 ReadOnlySpan<byte> buffer = _dmp3aImage.AsSpan(position, length);
@@ -991,7 +991,7 @@ namespace Biscuits.Devices.Icm20948
 
             Span<byte> buffer2 = new byte[chunkSize];
 
-            for (int position = 0; position < _dmp3aImage.Length / chunkSize; position += chunkSize)
+            for (int position = 0; position < _dmp3aImage.Length; position += chunkSize)
             {
                 int length = Math.Min(_dmp3aImage.Length - position, chunkSize);
                 
