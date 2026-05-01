@@ -151,6 +151,7 @@ namespace Biscuits.Devices.Icm20948
                 5/*1125Hz / 5 = 225Hz*/ => 15_252_014u,
                 10/*1125Hz / 10 = 112Hz*/ => 30_504_029u,
                 11/*1125Hz / 11 = 102Hz*/ => 33_554_432u,
+                19/*1125Hz / 20 = 56Hz*/ => 61_117_001u,
                 22/*1125Hz / 22 = 51Hz*/ => 67_108_864u,
                 _ => 15_252_014u
             };
@@ -171,8 +172,8 @@ namespace Biscuits.Devices.Icm20948
 
         public void SetGyroSF(byte gyroSmplRtDiv, float timebaseCorrectionPll)
         {
-            const double magicConstant = 264_446_880_937_391f;
-            const double magicConstantScale = 100_000f;
+            const double magicConstant = 264_446_880_937_391d;
+            const double magicConstantScale = 100_000d;
             const int gyroLevel = 4;
 
             double valueDouble = magicConstant / magicConstantScale / 1_270d * (1 << gyroLevel) * (1 + gyroSmplRtDiv) / (1f + timebaseCorrectionPll);
@@ -583,6 +584,22 @@ namespace Biscuits.Devices.Icm20948
             }
 
             _icm20948.SetMemsUInt16(0x05, 0xE4/*ACCEL_CAL_RATE*/, value);
+        }
+
+        public void SetCpassTimeBuffer(ushort rateHz)
+        {
+            if (_logger.IsEnabled(LogLevel.Debug))
+            {
+                _logger.LogDebug(
+                    "Set Mem Bank 0x{MemBank:X2} Mem Start Addr 0x{MemStartAddress:X2} ({Name}): {Value}Hz",
+                    0x04,
+                    0x54/*CPASS_TIME_BUFFER*/,
+                    "CPASS_TIME_BUFFER",
+                    rateHz
+                );
+            }
+
+            _icm20948.SetMemsUInt16(0x04, 0x54/*CPASS_TIME_BUFFER*/, rateHz);
         }
 
         public void SetB2SMtx(Vector3 row1, Vector3 row2, Vector3 row3)
