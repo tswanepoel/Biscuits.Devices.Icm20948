@@ -231,11 +231,11 @@ namespace Biscuits.Devices.Icm20948
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug(
-                    "Set Mem Bank 0x{MemBank:X2} Mem Start Addr 0x{MemStartAddress:X2} ({Name}): {Value}", 
+                    "Set Mem Bank 0x{MemBank:X2} Mem Start Addr 0x{MemStartAddress:X2} ({Name}): {Value}",
                     0x01,
                     0x78/*CPASS_MTX_02*/,
                     "CPASS_MTX_02",
-                    (int)row1Converted.Y
+                    (int)row1Converted.Z
                 );
             }
 
@@ -638,11 +638,11 @@ namespace Biscuits.Devices.Icm20948
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug(
-                    "Set Mem Bank 0x{MemBank:X2} Mem Start Addr 0x{MemStartAddress:X2} ({Name}): {Value}", 
+                    "Set Mem Bank 0x{MemBank:X2} Mem Start Addr 0x{MemStartAddress:X2} ({Name}): {Value}",
                     0x0D,
                     0x08/*B2S_MTX_02*/,
                     "B2S_MTX_02",
-                    (int)row1Converted.Y
+                    (int)row1Converted.Z
                 );
             }
 
