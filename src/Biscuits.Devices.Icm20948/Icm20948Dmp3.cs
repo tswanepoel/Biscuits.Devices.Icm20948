@@ -592,14 +592,14 @@ namespace Biscuits.Devices.Icm20948
             {
                 _logger.LogDebug(
                     "Set Mem Bank 0x{MemBank:X2} Mem Start Addr 0x{MemStartAddress:X2} ({Name}): {Value}Hz",
-                    0x04,
-                    0x54/*CPASS_TIME_BUFFER*/,
+                    0x07,
+                    0x0E/*CPASS_TIME_BUFFER*/,
                     "CPASS_TIME_BUFFER",
                     rateHz
                 );
             }
 
-            _icm20948.SetMemsUInt16(0x04, 0x54/*CPASS_TIME_BUFFER*/, rateHz);
+            _icm20948.SetMemsUInt16(0x07, 0x0E/*CPASS_TIME_BUFFER*/, rateHz);
         }
 
         public void SetB2SMtx(Vector3 row1, Vector3 row2, Vector3 row3)
